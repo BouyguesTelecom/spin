@@ -1,7 +1,8 @@
 # Spin App 🌀
- <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" />
 
-**Create Spin App** is a command-line interface (**CLI**) tool that is based on the Atro CLI. It allows you to easily generate a new application using [different templates]():
+![](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+
+**Create Spin App** is a command-line interface (**CLI**) tool that is based on the Atro CLI. It allows you to easily generate a new application using [different templates](examples):
 
 ○ Standalone webapp, powered by Astro <br />
 ○ Astro Frontend app (Astro / React) <br />
@@ -21,21 +22,23 @@ To use Create Spin App, you need to have **Node.js** and **npm (Node Package Man
 
 To create a new application using Create Spin App, you can run the following command:
 
-```bash
+```shell
 npx create-spin
 ```
 
 - This will launch the CLI and prompt you to choose a template for your application. Simply select the desired template and follow the instructions to generate your new application.
 
 - `create spin` runs in interactive mode by default, but it also provides the option to specify **additional templates from a remote repository** by passing the URL
-```bash
-npx create-spin -- --additionnalTemplate https://github.com/mdn/html-examples
-```
+   ```shell
+   npx create-spin -- --additionnalTemplate https://github.com/mdn/html-examples
+   ```
+
 ## Design
 
 **꩜ Spin is a common platform for developing, delivering and hosting frontends.**
 
 ### Templates / Starter kits
+
 - Create Spin App provides a set of templates that are designed to enhance the developer experience (DX) by providing a ready-to-use project structure with essential configurations.
 
 - By leveraging these templates, developers can quickly set up their projects with **essential tools and configurations**, allowing them to focus on building their applications.
@@ -46,17 +49,17 @@ npx create-spin -- --additionnalTemplate https://github.com/mdn/html-examples
 
 [Check out the full list][examples] of example templates, available on GitHub.
 
- <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
- <img src="https://img.shields.io/badge/Astro-0C1222?style=for-the-badge&logo=astro&logoColor=FDFDFE" />
- <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
- <img src="https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white" />
- <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=whit" />
- <img src="https://img.shields.io/badge/next%20js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
- <img src="https://img.shields.io/badge/remix-000000?style=for-the-badge&logo=remix&logoColor=white" />
-
+![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![](https://img.shields.io/badge/Astro-0C1222?style=for-the-badge&logo=astro&logoColor=FDFDFE)
+![](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![](https://img.shields.io/badge/next%20js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![](https://img.shields.io/badge/remix-000000?style=for-the-badge&logo=remix&logoColor=white)
 
 ### Spin Helm Subchart
-[The Spin Helm subchart]() included in the project structure is available on the Docker Hub registry. You can find more information about the subchart in [the chart repository]().
+
+[The Spin Helm subchart](https://github.com/BouyguesTelecom/charts/tree/main/bouyguestelecom/spin) included in the project structure is available on the Docker Hub registry. You can find more information about the subchart in [the chart repository](https://hub.docker.com/r/bouyguestelecomcharts/spin).
 
 ## Implementation
 
@@ -65,7 +68,6 @@ We try to bring this codebase to some high standards.
 > ℹ️ Spin development key criteria are: functional, performant & elegant.
 
 Part of the codebase structure [and code](https://github.com/withastro/astro/tree/d8bae784b4a3b555c213febe6334373d89c7e089/packages/create-astro) has been borrowed from the amazing [`Astro`](https://github.com/withastro/astro) project.
-
 
 ## CLI Flags
 
