@@ -1,0 +1,6 @@
+# Ignore artifacts:
+dist
+build
+coverage
+*.md
+.markdownlint.json

@@ -1,0 +1,51 @@
+name: spin-mfe
+
+services:
+  shell:
+    image: denoland/deno:alpine-1.35.3
+    restart: unless-stopped
+    depends_on:
+      - microfrontend_a
+      - microfrontend_b
+    environment:
+      SPIN_CONFIG_DEBUG: true
+      # SPIN_CONFIG_META_LANG: en
+      # SPIN_CONFIG_META_CHARSET: UTF-8
+      # SPIN_CONFIG_META_VIEWPORT: width=device-width, initial-scale=1.0
+      # SPIN_CONFIG_META_FAVICON: '꩜'
+      SPIN_CONFIG_META_TITLE: Micro-frontends composition
+      SPIN_CONFIG_META_EXTRA_LAYOUT: |
+        <meta name="description" content="Some description" />
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
+      SPIN_MFE_A_ORIGIN: http://microfrontend_a
+      SPIN_MFE_A_ORIGIN_CONFIG: |
+        {"TITLE":"Alice"}
+      SPIN_MFE_B_ORIGIN: http://microfrontend_a
+      SPIN_MFE_B_ORIGIN_CONFIG: |
+        {"TITLE":"Bob"}
+      SPIN_MFE_C_ORIGIN: http://microfrontend_b
+      SPIN_MFE_C_ORIGIN_CONFIG: |
+        {"foo":"bar"}
+    ports:
+      - 8085:3000
+    volumes:
+      - ./dist:/app:ro
+    command: run --allow-net --allow-read --allow-env /app/server/entry.mjs
+
+  microfrontend_a:
+    image: node:18-alpine
+    restart: unless-stopped
+    ports:
+      - 7101:80
+    volumes:
+      - ../micro-frontend-react:/app:ro
+    working_dir: /app/server
+    command: server.mjs
+
+  microfrontend_b:
+    image: caddy:2.6-alpine
+    restart: unless-stopped
+    ports:
+      - 7102:80
+    volumes:
+      - ../micro-frontend-es/dist:/usr/share/caddy:ro
