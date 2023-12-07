@@ -5,7 +5,6 @@ import path from 'node:path'
 import { error, info, spinner, title } from '../messages.js'
 import { execa } from 'execa'
 import { rimraf } from 'rimraf'
-import fsExtra from 'fs-extra'
 import * as jsYaml from 'js-yaml'
 import { cloneGitRepository } from './git.js'
 import { downloadTemplate } from 'giget'
@@ -86,7 +85,7 @@ function getTemplateTarget(template: string, ref = 'latest') {
   const isThirdParty = template.includes('/')
   if (isThirdParty) return template
 
-  return `github:BouyguesTelecom/spin/examples/${template}}`
+  return `github:BouyguesTelecom/spin/examples/${template}`
 }
 
 export default async function copyTemplate(template: string, ctx: Context) {
