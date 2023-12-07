@@ -1,9 +1,0 @@
-{
-  "name": "retrograde-raspberry",
-  "publishConfig": {
-    "registry": "https://glouton.int.nbyt.fr/artifactory/api/npm/npm/"
-  },
-  "dependencies": {
-    "@bytel/trilogy-react-ts": "3.8.0"
-  }
-}

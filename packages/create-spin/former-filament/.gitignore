@@ -1,7 +1,0 @@
-*.iml
-.idea
-helms/*/charts
-.DS_Store
-node_modules
-dist
-tmp
