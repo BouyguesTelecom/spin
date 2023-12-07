@@ -5,6 +5,7 @@ import { help } from './actions/help.js'
 import { intro } from './actions/intro.js'
 import { projectName } from './actions/project-name.js'
 import { template } from './actions/template.js'
+import { clearTemplate } from './actions/clear.js'
 
 const exit = () => process.exit(0)
 process.on('SIGINT', exit)
@@ -32,6 +33,7 @@ export async function main() {
 
     // Steps which write to files need to go above git
     git,
+    clearTemplate
   ]
 
   for (const step of steps) {

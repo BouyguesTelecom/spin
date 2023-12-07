@@ -1,0 +1,6 @@
+dependencies:
+- name: spin
+  repository: oci://registry-1.docker.io/bouyguestelecomcharts
+  version: 0.1.0
+digest: sha256:c4cde80b984c120ef1815166482ae7a782bce3f2d09a365e8104b7381be2fbc5
+generated: "2023-11-28T16:04:52.630139+01:00"

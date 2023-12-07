@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-console.log("Awesome Command");
 const currentVersion = process.versions.node
 
 const requiredMajorVersion = parseInt(currentVersion.split('.')[0], 10)

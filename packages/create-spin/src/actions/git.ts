@@ -14,8 +14,10 @@ export async function cloneGitRepository({ url, ctx }: { url: string; ctx: Conte
       end: 'Git repository cloned',
       while: async () => {
         await execa('git', ['clone', url, '--depth=1', additionalTemplateFolderPath], { stdio: 'ignore' })
-        const gitFolderPath = path.join(additionalTemplateFolderPath, '.git')
-        rimraf.sync(gitFolderPath)
+        try {
+          const gitFolderPath = path.join(additionalTemplateFolderPath, '.git')
+          rimraf.sync(gitFolderPath)
+        } catch {}
         mergeCopy(additionalTemplateFolderPath, ctx.cwd)
       },
     })
@@ -23,15 +25,13 @@ export async function cloneGitRepository({ url, ctx }: { url: string; ctx: Conte
 
 function mergeHelmsFiles(
   destinationHelmsTemplatesDir: string,
-  sourceHelmsTemplatesDir: string,
-  additionalTemplateFolderPath: string
+  sourceHelmsTemplatesDir: string
 ) {
   ncp(sourceHelmsTemplatesDir, destinationHelmsTemplatesDir, { clobber: true }, (err) => {
     if (err) {
       console.error(err)
       return
     }
-    rimraf.sync(additionalTemplateFolderPath)
   })
 }
 
@@ -50,8 +50,8 @@ function mergeCopy(sourceDir: string, destinationDir: string) {
           .join(destinationPath, destinationDir)
           .replace(/\/additionalTemplateFolder\//g, '/');
 
-        mergeHelmsFiles(destinationChartHelmTemplate, `${sourcePath}`, sourceDir);
-        mergeHelmsFiles(destinationHelmTemplate, `${sourcePath}/templates`, sourceDir);
+        mergeHelmsFiles(destinationChartHelmTemplate, `${sourcePath}`);
+        mergeHelmsFiles(destinationHelmTemplate, `${sourcePath}/templates`);
         break;
       case fs.statSync(sourcePath).isDirectory():
         mergeCopy(sourcePath, destinationPath);

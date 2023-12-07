@@ -8,6 +8,7 @@ import { rimraf } from 'rimraf'
 import fsExtra from 'fs-extra'
 import * as jsYaml from 'js-yaml'
 import { cloneGitRepository } from './git.js'
+import { downloadTemplate } from 'giget'
 
 interface ValuesInterface {
   name: string
@@ -85,54 +86,14 @@ function getTemplateTarget(template: string, ref = 'latest') {
   const isThirdParty = template.includes('/')
   if (isThirdParty) return template
 
-  return `github:BouyguesTelecom/spin/examples/${template}#${ref}`
-}
-
-async function copyFiles(source: string, destination: string) {
-  try {
-    const files = await fs.promises.readdir(source)
-    await fs.promises.mkdir(destination)
-
-    for (const file of files) {
-      const sourcePath = path.join(source, file)
-      const destPath = path.join(destination, file)
-
-      const stats = await fs.promises.stat(sourcePath)
-      if (stats.isDirectory()) {
-        await fs.promises.mkdir(destPath)
-
-        const subFiles = await fs.promises.readdir(sourcePath)
-        for (const subFile of subFiles) {
-          const subSourcePath = path.join(sourcePath, subFile)
-          const subDestPath = path.join(destPath, subFile)
-          const subStats = await fs.promises.stat(subSourcePath)
-
-          if (subStats.isDirectory()) {
-            await copyFiles(subSourcePath, subDestPath)
-          } else {
-            try {
-              await fs.promises.copyFile(subSourcePath, subDestPath)
-            } catch (error: any) {
-              console.error(`Error copying file ${subFile}: ${error.message}`)
-            }
-          }
-        }
-      } else {
-        await fs.promises.copyFile(sourcePath, destPath)
-      }
-    }
-  } catch (error: any) {
-    throw new Error(`Error copying files: ${error.message}`)
-  }
+  return `github:BouyguesTelecom/spin/examples/${template}}`
 }
 
 export default async function copyTemplate(template: string, ctx: Context) {
   const templateTarget = getTemplateTarget(template, ctx.ref)
   const newChartName = ctx.projectName || 'app'
 
-  const chartTemplateSource = path.join(path.dirname(templateTarget), '..', 'helms/')
-  const chartTemplateDestination = path.join(ctx.cwd, 'helms/')
-  const helmsFolderPath = path.join(chartTemplateDestination, newChartName)
+  const helmsPath = path.join(ctx.cwd, `helms/${newChartName}`)
 
   if (template) {
     const isInsideCurrentDir = path.resolve(templateTarget).startsWith(path.resolve(ctx.cwd))
@@ -145,13 +106,22 @@ export default async function copyTemplate(template: string, ctx: Context) {
         await rimraf(ctx.cwd)
       }
 
-      await copyFiles(templateTarget, ctx.cwd)
+      await downloadTemplate(templateTarget, {
+        force: true,
+        provider: 'github',
+        cwd: ctx.cwd,
+        dir: '.',
+      })
 
-      fsExtra.ensureDirSync(helmsFolderPath)
-      fsExtra.copySync(chartTemplateSource, helmsFolderPath)
+      await downloadTemplate(`github:BouyguesTelecom/spin/helms`, {
+        force: true,
+        provider: 'github',
+        cwd: ctx.cwd,
+        dir: `helms/${newChartName}`,
+      })
 
       if (ctx.additionalTemplate) {
-        const valuesPath = path.join(helmsFolderPath, 'values.yaml')
+        const valuesPath = path.join(helmsPath, 'values.yaml')
         fs.readFile(valuesPath, 'utf8', (err, data) => {
           if (err) return console.log(err)
           const result = data.replace(/tag:/g, 'tag: __VERSION_GATEWAY__')
@@ -162,7 +132,7 @@ export default async function copyTemplate(template: string, ctx: Context) {
         await cloneGitRepository({ url: ctx.additionalTemplate, ctx })
       }
 
-      const valuesFilePath = path.join(helmsFolderPath, 'Chart.yaml')
+      const valuesFilePath = path.join(helmsPath, 'Chart.yaml')
       const valuesFileContent = fs.readFileSync(valuesFilePath, 'utf-8')
       const valuesData = jsYaml.load(valuesFileContent) as ValuesInterface
 
