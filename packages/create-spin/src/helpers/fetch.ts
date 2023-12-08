@@ -8,7 +8,7 @@ export const fetch = (
   const options = { ...init }
   const proxy = globalThis.process?.env?.https_proxy
 
-  if (proxy && init?.agent !== null) {
+  if (proxy) {
     console.debug('setting proxy:', proxy)
     options.agent = new HttpsProxyAgent(proxy)
   }
