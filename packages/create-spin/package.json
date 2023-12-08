@@ -1,10 +1,10 @@
 {
   "name": "create-spin-app-v1",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "type": "module",
   "main": "./create-spin.mjs",
   "bin": {
-    "create-spin": "./create-spin.mjs"
+    "create-spin": "create-spin.mjs"
   },
   "scripts": {
     "prepare": "npm run build",
