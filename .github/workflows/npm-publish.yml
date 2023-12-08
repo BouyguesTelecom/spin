@@ -21,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: Login to NPM
-        run: npm login --registry=https://registry.npmjs.org/ --scope=@<username> --always-auth
+        run: npm login --registry=https://registry.npmjs.org/ --scope=@$NPM_LOGIN --always-auth
 
       - name: Publish to NPM
         run: npm publish --workspace packages/create-spin
