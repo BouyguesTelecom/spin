@@ -20,7 +20,7 @@ export async function template(ctx: Pick<Context, 'template' | 'prompt' | 'dryRu
       type: 'select',
       label: title('template'),
       message: 'How would you like to start your new project?',
-      initial: 'csr-astro-react',
+      initial: 'ssr-astro-react',
       choices: [
         { value: 'csr-astro-react', label: 'Astro Frontend app (Astro React CSR)',  hint: '(recommended)' },
         { value: 'csr-micro-frontend-react', label: 'React Frontend app (React CSR)' },
