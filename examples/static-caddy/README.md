@@ -26,5 +26,7 @@ Any static assets, like images, can be placed in the `public/` directory.
 All commands are run from the root of the project, from a terminal:
 
 | Command             | Action                        |
-| :------------------ | :---------------------------- |
+|:--------------------|:------------------------------|
 | `docker compose up` | Start the app using 🐳 Docker |
+
+Open a web browser and navigate to the address <http://localhost:8081:80> 🖥️
