@@ -2,8 +2,8 @@
 import { color, say as houston, label, spinner as load } from '@astrojs/cli-kit'
 import { align, sleep } from '@astrojs/cli-kit/utils'
 import { execa } from 'execa'
-import fetch from 'node-fetch-native'
 import { exec } from 'node:child_process'
+import { fetch } from './helpers/fetch.js'
 import stripAnsi from 'strip-ansi'
 import detectPackageManager from 'which-pm-runs'
 
