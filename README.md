@@ -1,12 +1,12 @@
 # Spin App 🌀
 
-![](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+[![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/create-spin-app)
 
 Common platform for developing, delivering and hosting frontends.
 
 Spin is a mono repository that includes a command-line interface (**CLI**) package hosted on npm ( 👉 [Create Spin App](https://github.com/BouyguesTelecom/spin/tree/main/examples)) , which allows you to easily generate a new application using [different templates](https://github.com/BouyguesTelecom/spin/blob/main/examples/README.md)
 
-In addition, Spin also includes a set of Helm templates, based on our [The Spin Helm subchart](https://github.com/BouyguesTelecom/charts/tree/main/bouyguestelecom/spin) included in the project structure and available on the [Docker Hub registry](https://hub.docker.com/r/bouyguestelecomcharts/spin). You can find more information about the subchart in [the chart repository](https://hub.docker.com/r/bouyguestelecomcharts/spin).
+In addition, Spin also includes a set of Helm templates, based on our [The Spin Helm subchart](https://github.com/BouyguesTelecom/charts/tree/main/bouyguestelecom/spin) included in the project structure and available on the [Docker Hub registry 🐳](https://hub.docker.com/r/bouyguestelecomcharts/spin).
 
 This dependency can be used for deploying your applications on Kubernetes easily.
 
@@ -45,9 +45,10 @@ npx create-spin-app@latest
 - This will launch the CLI and prompt you to choose a template for your application. Simply select the desired template and follow the instructions to generate your new application.
 
 - `create spin` runs in interactive mode by default, but it also provides the option to specify **additional templates from a remote repository** by passing the URL
-   ```shell
-  npx create-spin-app@latest -- --additionnalTemplate https://github.com/mdn/html-examples
-   ```
+
+```shell
+npx create-spin-app@latest -- --additionnalTemplate https://github.com/mdn/html-examples
+```
 
 ### Templates / Starter kits
 
@@ -64,7 +65,7 @@ npx create-spin-app@latest
 
 ### Spin Helm Subchart
 
-[The Spin Helm subchart](https://github.com/BouyguesTelecom/charts/tree/main/bouyguestelecom/spin) included in the project structure is available on the Docker Hub registry. You can find more information about the subchart in [the chart repository](https://hub.docker.com/r/bouyguestelecomcharts/spin).
+[The Spin Helm subchart](https://github.com/BouyguesTelecom/charts/tree/main/bouyguestelecom/spin) included in the project structure is available on the Docker Hub registry. You can find more information about the subchart in [the chart repository 🐳](https://hub.docker.com/r/bouyguestelecomcharts/spin).
 
 ## Implementation
 
