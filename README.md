@@ -1,6 +1,6 @@
 # Spin App 🌀
 
-[![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/create-spin-app)
+[![npm](https://img.shields.io/npm/v/create-spin-app?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/create-spin-app)
 
 Common platform for developing, delivering and hosting frontends.
 
