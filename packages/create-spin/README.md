@@ -1,5 +1,5 @@
 # Create Spin App 🌀
- <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" />
+![](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 
 **Create Spin App** is a command-line interface (**CLI**) tool that is based on the Atro CLI. It allows you to easily generate a new application using [different templates](../../examples):
 
@@ -22,14 +22,14 @@ To use Create Spin App, you need to have **Node.js** and **npm (Node Package Man
 To create a new application using Create Spin App, you can run the following command:
 
 ```shell
-npx create-spin
+npx create-spin@latest
 ```
 
 - This will launch the CLI and prompt you to choose a template for your application. Simply select the desired template and follow the instructions to generate your new application.
 
 - `create spin` runs in interactive mode by default, but it also provides the option to specify **additional templates from a remote repository** by passing the URL
    ```shell
-   npx create-spin -- --additionnalTemplate https://github.com/mdn/html-examples
+   npx create-spin@latest -- --additionnalTemplate https://github.com/mdn/html-examples
    ```
 
 ## Design
