@@ -1,6 +1,6 @@
 {
   "name": "create-spin-app",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "main": "./create-spin.mjs",
   "bin": {
