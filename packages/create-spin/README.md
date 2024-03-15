@@ -23,7 +23,7 @@ To use Create Spin App, you need to have **Node.js** and **npm (Node Package Man
 To create a new application using Create Spin App, you can run the following command:
 
 ```shell
-npx create-spin@latest
+npx create-spin-app@latest
 ```
 
 - This will launch the CLI and prompt you to choose a template for your application. Simply select the desired template and follow the instructions to generate your new application.
@@ -31,7 +31,7 @@ npx create-spin@latest
 - `create spin` runs in interactive mode by default, but it also provides the option to specify **additional templates from a remote repository** by passing the URL
 
    ```shell
-   npx create-spin@latest -- --additionnalTemplate https://github.com/mdn/html-examples
+   npx create-spin-app@latest -- --additional-template https://github.com/mdn/html-examples
    ```
 
 ## Design
