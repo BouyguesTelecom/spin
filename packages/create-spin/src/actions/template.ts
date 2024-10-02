@@ -3,7 +3,6 @@ import { color } from '@astrojs/cli-kit'
 import fs from 'node:fs'
 import path from 'node:path'
 import { error, info, spinner, title } from '../messages.js'
-import { execa } from 'execa'
 import { rimraf } from 'rimraf'
 import * as jsYaml from 'js-yaml'
 import { cloneGitRepository } from './git.js'
@@ -22,7 +21,7 @@ export async function template(ctx: Pick<Context, 'template' | 'prompt' | 'dryRu
       message: 'How would you like to start your new project?',
       initial: 'ssr-astro-react',
       choices: [
-        { value: 'csr-astro-react', label: 'Astro Frontend app (Astro React CSR)',  hint: '(recommended)' },
+        { value: 'csr-astro-react', label: 'Astro Frontend app (Astro React CSR)', hint: '(recommended)' },
         { value: 'csr-micro-frontend-react', label: 'React Frontend app (React CSR)' },
         { value: 'micro-frontend-es', label: 'Pure VanillaJS frontend app (VanillaJS)' },
         { value: 'micro-frontend-shell', label: 'Shell App (Shell)' },
@@ -73,9 +72,9 @@ const FILES_TO_UPDATE = {
         JSON.stringify(
           Object.assign(JSON.parse(value), Object.assign(overrides, { private: undefined })),
           null,
-          indent
+          indent,
         ),
-        'utf-8'
+        'utf-8',
       )
     }),
 }
@@ -123,7 +122,7 @@ export default async function copyTemplate(template: string, ctx: Context) {
         fs.readFile(valuesPath, 'utf8', (err, data) => {
           if (err) return console.log(err)
           const result = data.replace(/tag:/g, 'tag: __VERSION_GATEWAY__')
-          fs.writeFile(valuesPath, result, 'utf8', function (err) {
+          fs.writeFile(valuesPath, result, 'utf8', function(err) {
             if (err) return console.log(err)
           })
         })
