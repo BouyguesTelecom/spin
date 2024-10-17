@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "moduleResolution": "node",
+    "allowJs": true
+  },
+  "include": ["src", "index.d.ts"]
+}

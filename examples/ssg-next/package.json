@@ -1,0 +1,32 @@
+{
+  "name": "ssg-next",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "concurrently \"sass --watch ./src/**/*.scss .build/styles/style.css\" \"node server.js\"",
+    "build": "sass ./src/styles/*.scss .build/styles/style.css && next build",
+    "start": "export NODE_ENV=production &&  NODE_OPTIONS='-r next-logger' node server.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "next": "^14",
+    "next-logger": "^3.0.2",
+    "patch-package": "^8.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "latest",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
+    "concurrently": "^8.2.2",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "markdownlint": "^0.32.1",
+    "sass": "^1.69.5",
+    "typescript": "latest"
+  }
+}

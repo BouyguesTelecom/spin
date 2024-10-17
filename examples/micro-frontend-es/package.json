@@ -1,0 +1,21 @@
+{
+  "name": "micro-frontend-basic",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "cd server && npm i",
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "start": "cd server && npm start"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20.4.6",
+    "markdownlint": "^0.32.1",
+    "vite": "^4.4.8",
+    "vitest": "^0.34.1"
+  }
+}

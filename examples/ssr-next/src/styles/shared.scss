@@ -1,0 +1,60 @@
+.counter {
+  display: grid;
+  font-size: 2em;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2em;
+  place-items: center;
+}
+
+section {
+  background-color: #f8f9fa;
+}
+
+textarea {
+  height: 60px;
+  width: 300px;
+}
+
+div {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+nav {
+  background-color: #fff; /* change the background color to white */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 0.5rem 0; /* add some padding to create space */
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+
+nav li {
+  position: relative;
+  color: cornflowerblue;
+  display: block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+nav li a {
+  color: #333;
+  display: block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+}

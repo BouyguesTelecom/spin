@@ -1,0 +1,10 @@
+services:
+  service:
+    image: caddy:2.6-alpine
+    # build:
+    #   context: .
+    ports:
+      - 8081:80
+    volumes:
+      - ./public:/usr/share/caddy:ro
+      # - ./Caddyfile:/etc/caddy/Caddyfile:ro

@@ -1,0 +1,31 @@
+---
+//IMPORTS
+import Layout from '../../layout/Layout.astro'
+
+//REQUEST
+const { id } = Astro.params
+const request = await fetch(`http://localhost:4321/api/users/${id}.json`)
+const user = await request.json()
+
+if (Object.keys(user).length === 0) {
+  return new Response(null, {
+    status: 404,
+    statusp: 'User not found',
+  })
+}
+---
+
+<Layout title='User'>
+  <div>
+    <Title level='ONE'>{user.name}</Title>
+
+    <p>Informations :</p>
+    <p>{user.username}</p>
+    <p>{user.email}</p>
+    <p>{user.phone}</p>
+    <p>{user.website}</p>
+
+    <p>Adresse :</p>
+    <p>{`${user.address.street} ${user.address.city}, ${user.address.zipcode}, ${user.address.suite}`}</p>
+  </div>
+</Layout>

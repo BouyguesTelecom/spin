@@ -1,0 +1,13 @@
+---
+// IMPORTS
+import Layout from '../layout/Layout.astro'
+import Users from '../components/Users'
+
+const request = await fetch('http://localhost:4321/api/users.json')
+const data = await request.json()
+const users = data
+---
+
+<Layout title='Users'>
+  <Users users={users} />
+</Layout>

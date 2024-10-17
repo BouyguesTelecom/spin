@@ -1,0 +1,31 @@
+{
+  "name": "micro-frontend-shell",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "deno run --allow-net --allow-read --allow-env ./dist/server/entry.mjs",
+    "astro": "astro",
+    "prettier": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/deno": "^4.3.0",
+    "@astrojs/react": "^2.2.1",
+    "@astrojs/solid-js": "^2.2.0",
+    "astro": "^2.9.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "solid-js": "^1.7.8",
+    "swr": "^2.2.0"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "markdownlint": "^0.32.1",
+    "prettier": "2.8.4",
+    "prettier-plugin-astro": "0.8.0"
+  }
+}

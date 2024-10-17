@@ -1,0 +1,43 @@
+---
+import React from 'react'
+import MicroFrontends from '../components/MicroFrontends'
+import { buildManifest } from '../utils/manifest'
+
+const manifest = await buildManifest()
+
+// function renderFavicon(charOrPath?: string): React.ReactElement | undefined {
+//   if (!charOrPath) {
+//     return undefined
+//   }
+
+//   let path = charOrPath
+//   if (charOrPath.length === 1) {
+//     path = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 fill='white' font-size=%2290%22>${charOrPath}</text></svg>`
+//   }
+
+//   return React.createElement('link', { rel: 'icon', href: path })
+// }
+
+const currentPath = Astro.url.pathname
+---
+
+<!DOCTYPE html>
+<html lang={manifest.config.metaLang ?? 'en'}>
+  {manifest.config.metaCharset && <meta charset={manifest.config.metaCharset} />}
+  {manifest.config.metaViewport && <meta name='viewport' content={manifest.config.metaViewport} />}
+  <!-- {renderFavicon(manifest.config.favicon)} -->
+  {manifest.config.metaTitle && <title>{manifest.config.metaTitle}</title>}
+  <React.Fragment set:html={manifest.config.metaExtraLayout} />
+  {manifest.mfes.filter((mfe) => Boolean(mfe.css)).map((mfe) => <link rel='stylesheet' href={mfe.css} />)}
+
+  <main>
+    {
+      manifest.config.debug && (
+        <h1>
+          <mark style={{ backgroundColor: '#acf' }}>꩜ Spin shell app</mark>
+        </h1>
+      )
+    }
+    <MicroFrontends manifest={manifest} currentPath={currentPath} />
+  </main>
+</html>

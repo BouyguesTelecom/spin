@@ -1,0 +1,27 @@
+spin:
+  fullnameOverride:
+  deployment:
+    imagePullSecrets:
+      - name:
+    image:
+      repository:
+      tag:
+    containerEnv:
+      env:
+        - name: HTTPS_PROXY
+          value: ""
+        - name: HTTP_PROXY
+          value: ""
+  ingress:
+    host:
+    tls:
+      secretName:
+    rules:
+      - host:
+        paths:
+          - path: "/"
+            pathType: Prefix
+  secrets:
+    data:
+      .dockerconfigjson: {}
+    type: 'kubernetes.io/dockerconfigjson'

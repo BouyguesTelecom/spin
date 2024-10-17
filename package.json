@@ -1,0 +1,17 @@
+{
+  "name": "spin",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "./packages/*"
+    ]
+  },
+  "scripts": {
+    "preinstall": "npm run --silent preinstall:$(uname | tr '[:upper:]' '[:lower:]') --workspaces --if-present",
+    "build": "npm i && npm run build --workspaces --if-present",
+    "postinstall": "patch-package",
+    "build:cli": "npm run build -w packages/create-spin",
+    "launch:cli": "npm run start -w packages/create-spin"
+  },
+  "packageManager": "npm@9.5.1"
+}
